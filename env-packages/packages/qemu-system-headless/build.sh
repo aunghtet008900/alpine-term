@@ -17,7 +17,7 @@ termux_step_configure() {
 		--objcc="${CC}" \
 		--extra-ldflags="${LDFLAGS} -lm" \
 		--enable-curses \
-		--enable-vnc \
+		--disable-vnc \
 		--enable-coroutine-pool \
 		--enable-virtfs \
 		--enable-trace-backends=nop \
