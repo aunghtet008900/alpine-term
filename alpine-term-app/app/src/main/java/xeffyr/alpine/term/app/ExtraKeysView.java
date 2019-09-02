@@ -3,6 +3,7 @@ package xeffyr.alpine.term.app;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Typeface;
+import android.provider.Settings;
 import android.util.AttributeSet;
 import android.view.HapticFeedbackConstants;
 import android.view.KeyEvent;
@@ -36,10 +37,12 @@ public final class ExtraKeysView extends GridLayout {
     private ScheduledExecutorService scheduledExecutor;
     private PopupWindow popupWindow;
     private int longPressCount;
+    private Context context;
 
 
     public ExtraKeysView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.context = context;
         reload();
     }
 
@@ -195,7 +198,11 @@ public final class ExtraKeysView extends GridLayout {
 
                 final Button finalButton = button;
                 button.setOnClickListener(v -> {
-                    finalButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                    if (Settings.System.getInt(context.getContentResolver(),
+                        Settings.System.HAPTIC_FEEDBACK_ENABLED, 0) != 0) {
+                        finalButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                    }
+
                     View root = getRootView();
 
                     switch (buttonText) {
