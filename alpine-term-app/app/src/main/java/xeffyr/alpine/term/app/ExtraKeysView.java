@@ -37,12 +37,10 @@ public final class ExtraKeysView extends GridLayout {
     private ScheduledExecutorService scheduledExecutor;
     private PopupWindow popupWindow;
     private int longPressCount;
-    private Context context;
 
 
     public ExtraKeysView(Context context, AttributeSet attrs) {
         super(context, attrs);
-        this.context = context;
         reload();
     }
 
@@ -198,7 +196,7 @@ public final class ExtraKeysView extends GridLayout {
 
                 final Button finalButton = button;
                 button.setOnClickListener(v -> {
-                    if (Settings.System.getInt(context.getContentResolver(),
+                    if (Settings.System.getInt(getContext().getContentResolver(),
                         Settings.System.HAPTIC_FEEDBACK_ENABLED, 0) != 0) {
                         finalButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
                     }
