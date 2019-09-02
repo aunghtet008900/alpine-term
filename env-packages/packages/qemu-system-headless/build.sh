@@ -4,7 +4,7 @@ TERMUX_PKG_LICENSE="LGPL-2.1"
 TERMUX_PKG_VERSION=4.0.0
 TERMUX_PKG_SRCURL=https://download.qemu.org/qemu-${TERMUX_PKG_VERSION}.tar.xz
 TERMUX_PKG_SHA256=13a93dfe75b86734326f8d5b475fde82ec692d5b5a338b4262aeeb6b0fa4e469
-TERMUX_PKG_DEPENDS="attr, capstone, glib, libandroid-support, libbz2, libcap, liblzo, libpixman, zlib"
+TERMUX_PKG_DEPENDS="attr, capstone, glib, libbz2, libcap, liblzo, libpixman, zlib"
 TERMUX_PKG_BUILD_IN_SRC=true
 
 termux_step_configure() {
@@ -17,6 +17,7 @@ termux_step_configure() {
 		--objcc="${CC}" \
 		--extra-ldflags="${LDFLAGS} -lm" \
 		--disable-curses \
+		--disable-iconv \
 		--disable-vnc \
 		--enable-coroutine-pool \
 		--enable-virtfs \
