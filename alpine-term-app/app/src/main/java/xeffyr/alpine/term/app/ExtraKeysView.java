@@ -196,9 +196,14 @@ public final class ExtraKeysView extends GridLayout {
 
                 final Button finalButton = button;
                 button.setOnClickListener(v -> {
+                    // Check whether haptic feedback enabled.
                     if (Settings.System.getInt(getContext().getContentResolver(),
                         Settings.System.HAPTIC_FEEDBACK_ENABLED, 0) != 0) {
-                        finalButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+
+                        // Check whether "Do not disturb" mode disabled.
+                        if (Settings.Global.getInt(getContext().getContentResolver(), "zen_mode", 0) < 1) {
+                            finalButton.performHapticFeedback(HapticFeedbackConstants.KEYBOARD_TAP);
+                        }
                     }
 
                     View root = getRootView();
