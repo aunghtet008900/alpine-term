@@ -27,10 +27,10 @@ virtualizer.
 
 ## User's Guide
 
-**Important**: this user's guide does not include information about
-"how to use shell" or "how to use Alpine Linux". If you are new for
-such topics, it is recommended to read [Bash Guide for Beginners](doc/bash-guide.html)
-and [Advanced Bash-Scripting Guide](doc/bash-advanced.html).
+**Important**: Since mksh is the default shell, it is recommended to read its
+manual page: [mksh(1)](doc/mksh.html). The more general shell scripting guides
+like [Bash Guide for Beginners](doc/bash-guide.html) and [Advanced Bash-Scripting Guide](doc/bash-advanced.html)
+are also recommended for reading.
 
  - [User interface](#user-interface)
    - [Main menu](#main-menu)
